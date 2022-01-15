@@ -2,15 +2,15 @@ public class Rectangle {
     private int length;
     private int breadth;
 
-    public int calculatePerimeter(int length, int breadth) {
-        return 2 * (length + breadth);
+    public int calculatePerimeter() {
+        return 2 * (this.getLength() + this.getBreadth());
     }
 
     public static void main(String[] args) {
         Rectangle rec = new Rectangle();
         rec.setLength(5);
         rec.setBreadth(3);
-        System.out.println(rec.calculatePerimeter(rec.getLength(), rec.getBreadth()));
+        System.out.println(rec.calculatePerimeter());
     }
 
     public void setLength(int length) {
