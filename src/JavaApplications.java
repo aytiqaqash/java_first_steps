@@ -1,4 +1,4 @@
-public class JavaApplications2{
+class JavaApplications2{
     static int mfunc1()
     {
         System.out.println("Inside Func1");
