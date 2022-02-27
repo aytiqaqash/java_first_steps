@@ -1,28 +1,20 @@
-class Loan {
-    public double calculateEMI(double principal) {
-        double simpleInterest = (principal*8.5*5) / 100;
-        return (simpleInterest+principal)/5;
-    }
+class Loan{
+    int i;
+    Loan(int x){
+        i=x;
+        System.out.println("Request for loan");}
+
 }
 
-class HomeLoan extends Loan {
-    public double calculateEMI(double principal) {
-        int additionaltax = 200;
-        double emi = super.calculateEMI(principal);      //calling super class method
-        return emi + additionaltax;
+class HomeLoan extends Loan{
+    int i;
+    HomeLoan(){
+        super(10);
+        i=super.i;
+        System.out.println("Request for homeloan"+i);
+    }
+
+    public static void main(String[] args){
+        HomeLoan obh=new HomeLoan();
     }
 }
-
-
-class ExecuteLoan {
-    public static void main(String[] args) {
-        Loan loan = null;
-        loan =  new HomeLoan();                 // Runtime polymorphism
-        double hloan = loan.calculateEMI(2000000);
-        System.out.println("Home loan emi per year..."+ hloan);
-    }
-}
-
-
-
-
