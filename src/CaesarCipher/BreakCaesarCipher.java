@@ -7,15 +7,15 @@ public class BreakCaesarCipher {
     // getKey istifadə edəcək
     public int[] countLetters(String message) {
         // alphabet
-        String alph = "abcdefghijklmnopqrstuvwxyz";
+        String alph = "abcdefghijklmnopqrstuvwxyz"; // kiçik hərflərdən ibarət əlifba
         // array for each char of alphabet
-        int[] counts = new int[26];
+        int[] counts = new int[26]; // hər hərfin qarşımıza çıxmasını burada saxlayacağıq
         // Go through the message chars and add counts for that char
         for (int k = 0; k < message.length(); k++) {
-            char ch = Character.toLowerCase(message.charAt(k));
-            int dex = alph.indexOf(ch);
+            char ch = Character.toLowerCase(message.charAt(k)); // d
+            int dex = alph.indexOf(ch); // 3
             if (dex != -1) {
-                counts[dex] += 1;
+                counts[dex] += 1; // indexin dəyərini bir dənə artır  3 => +1
             }
         }
         return counts;
@@ -29,19 +29,19 @@ public class BreakCaesarCipher {
                 maxDex = k;
             }
         }
-        return maxDex;
+        return maxDex; // maksimal dəyəri olan index
     }
 
     // decrypt üçün açarı ədldə edirik
     public int getKey(String encrypted){
-        // get the Frequency of the letters
-        int[] freqs = countLetters(encrypted);
-        int maxDex = maxIndex(freqs);
+        // get the Frequency of the letters 26
+        int[] freqs = countLetters(encrypted); // hər hərfdən neçə dənədir?!
+        int maxDex = maxIndex(freqs); // maksimal dəyəri olan index
         int dkey = maxDex - 4;
         if (maxDex < 4) {
-            dkey = 26 - (4 - maxDex);
+            dkey = 26 - (4 - maxDex); // original açar 26 - 25
         }
-        return 26 - dkey;
+        return 26 - dkey; // deşifrələmək üçün istifadə oluna biləcək açarı geri qaytarırıq.
     }
 
     // Decryption Without Keys
@@ -49,7 +49,7 @@ public class BreakCaesarCipher {
         // create an CaesarCipher object
         CaesarCipher cc = new CaesarCipher();
         int dkey = getKey(encrypted);
-        return cc.encrypt(encrypted, dkey);
+        return cc.encrypt(encrypted, dkey); // 17 | 26 - 17
     }
 
     public void testDecrypt(String message) {
@@ -69,7 +69,6 @@ public class BreakCaesarCipher {
         StringBuilder part = new StringBuilder();
         for (int i = start; i < message.length(); i+=2) {
             part.append(message.charAt(i));
-
         }
         return part.toString();
     }
@@ -108,10 +107,8 @@ public class BreakCaesarCipher {
     public static void main(String[] args) {
         BreakCaesarCipher breakCaesarCipher = new BreakCaesarCipher();
         String message = "When trying to decrypt a cipher text based on a substitution cipher, we can use a frequency analysis to help identify the most recurring letters in a cipher text and hence make hypothesis of what these letters have been encoded as (e.g. E, T, A, O, etc). This will help us decrypt some of the letters in the text. We can then recognise patterns/words in the partly decoded text to identify more substitutions.";
-
         breakCaesarCipher.testDecrypt(message);
         breakCaesarCipher.testDecryptWithTwoKeys(message);
-
     }
 
 
